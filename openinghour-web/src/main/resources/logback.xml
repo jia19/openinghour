@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration>
+
+    <property name="applicationName" value="openinghour" scope="context"/>
+    <!-- Common file based logger for WmpAgreement -->
+    <appender name="CommonFileAppender-openinghour-CTRL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        
+        <encoder>
+            <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- Filename pattern set to use suffix .zip makes log files compressed -->
+            <fileNamePattern>logs/openinghour-v1-daily-%d{yyyy-MM-dd}.%i.log.zip
+            </fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+        </rollingPolicy>
+    </appender>
+       
+    <logger name="com.wolt.demo.openinghour" level="INFO">
+        <appender-ref ref="CommonFileAppender-openinghour-CTRL" />
+    </logger> 
+    
+<!--      <root level="WARN"> -->
+<!--         <appender-ref ref="CommonFileAppender-openinghour-CTRL" /> -->
+<!--     </root>   -->
+</configuration>
