@@ -1,11 +1,14 @@
 
 openinghour is a demo spring boot application which displays opening hours for a mocked restaurants. 
 
+The code is available at https://github.com/jia19/openinghour
+
 The implementation has four modules: 
 * openinghour-common contains the domain model classes(the improved version of the mock data provided in this demo).
-* openinghour-integration contains the integration module, which can be used to integrate input data. 
+* openinghour-integration contains the integration module, which can be used to integrate input data. In this demo, the input data is loaded from a json file and open/close action are sorted according of day of week and action time when loaded.s 
 * openinghour-service contains shared service functionalities across endpoints.
 * opeinghour-web contains endpoints.
+
 
 # Build and Run
 
@@ -71,17 +74,13 @@ See OpenApiConfig.java in openinghour-web.
 
 # Openinghour - To be improved
 
-## Circuit Breaker
-
-Circuit breaker pattern is a way of making an application fault tolerant and highly available. The provided library is [Resilience4j Circuit Breaker](https://resilience4j.readme.io/docs/circuitbreaker).
-
 ## Bulkhead
 
 The [Bulkhead pattern](https://docs.microsoft.com/en-us/azure/architecture/patterns/bulkhead) implemented by [Resilience4j Bulkhead](https://resilience4j.readme.io/docs/bulkhead) can restrict the amount of calls that can be made to a method.
 
 ## Unit test
 
-The unit tests are ignored in this demo. More test cases should be added.
+The unit tests are ignored in this demo. 
 
 ## Profiles
 Different profiles should be provided, e.g. dev, prod.
