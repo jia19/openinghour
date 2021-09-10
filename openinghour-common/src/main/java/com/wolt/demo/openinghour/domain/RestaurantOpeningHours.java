@@ -1,5 +1,6 @@
 package com.wolt.demo.openinghour.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
  *
  */
 @Schema(description = "Restaurant opening hours")
-public class RestaurantOpeningHours {
+public class RestaurantOpeningHours implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Schema(description = "Opening hours")
     private List<OpeningHour> openingHours;
@@ -31,8 +34,8 @@ public class RestaurantOpeningHours {
         return openingHours;
     }
 
-    public void setOpeningHours(List<OpeningHour> convertedOpeningHours) {
-        this.openingHours = convertedOpeningHours;
+    public void setOpeningHours(List<OpeningHour> openingHours) {
+        this.openingHours = openingHours;
     }
 
 }

@@ -1,5 +1,7 @@
 package com.wolt.demo.openinghour.domain;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
@@ -9,7 +11,9 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "Opening hour action")
-public class OpeningHourAction {
+public class OpeningHourAction implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Schema(required = true)
     private ActionType type;
@@ -23,6 +27,12 @@ public class OpeningHourAction {
 
     public OpeningHourAction() {
         super();
+    }
+
+    public OpeningHourAction(ActionType type, @Min(0) @Max(86399) int value) {
+        super();
+        this.type = type;
+        this.value = value;
     }
 
     @Override

@@ -1,8 +1,10 @@
 package com.wolt.demo.openinghour.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
+
+import javax.validation.constraints.NotBlank;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -10,10 +12,15 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "Opening hours")
-public class OpeningHour {
-    @Schema(required = true,
-            description = "Week day")
+public class OpeningHour implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @NotBlank
+    @Schema(description = "Week day")
     private WeekDay weekday;
+
+    @Schema(description = "Open or close")
     private List<OpeningHourAction> actions;
 
     public OpeningHour() {
@@ -44,6 +51,5 @@ public class OpeningHour {
 
     public void setActions(List<OpeningHourAction> actions) {
         this.actions = actions;
-        this.actions.sort(Comparator.comparing(OpeningHourAction::getValue));
     }
 }
